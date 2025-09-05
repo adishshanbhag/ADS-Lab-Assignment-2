@@ -20,7 +20,7 @@ class singleLinkedList:
         else:
             cur = self.head
             while cur!=None:
-                print("{} ".format(cur.data))
+                print("{} ".format(cur.data), end=" ")
                 cur = cur.next
     #add head element
     def add_at_head(self, ele):
@@ -62,7 +62,7 @@ class singleLinkedList:
             prev.next = None
             del(cur)
             self.tail = prev
-            count -= 1
+            self.count = self.count - 1
 
     #add element after data
     def add_after_data(self,key, ele):
@@ -74,6 +74,8 @@ class singleLinkedList:
                 new_node = self._node_(ele)
                 new_node.next = cur.next
                 cur.next = new_node
+                if cur == self.tail:
+                    self.tail = new_node
                 self.count+=1
                 print("Element {} added after {} Node".format(ele,key))
         else:
