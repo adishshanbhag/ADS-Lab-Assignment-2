@@ -1,43 +1,61 @@
-from Assignment import *
+from Question_1 import *
+LL = singleLinkedList()
 
-#Add at head
+def add_head_test():
+    LL.add_at_head(10)
+    # assert LL.get_count() == 1
+    # print("Element added at head")
+    # LL.displayLL()
 
-SLL = singleLinkedList()
-# print("Adding element at head:")
-SLL.add_at_head(10)
-# assert SLL.get_count()==1
+def add_tail_test():
+    LL.add_at_tail(20)
+    # print("Element added at tail")
+    assert LL.get_count() == 2
+    # LL.displayLL()
 
-# print("\nBefore adding element:")
-# SLL.displayLL()
-# print("\n")
-SLL.add_after_data(10,20)
-SLL.add_after_data(20,30)
-SLL.add_after_data(30,40)
-# print("After adding element")
-# SLL.displayLL()
-# print("\n")
+# def delete_head_test():
+#     print("Before deleting head")
+#     LL.displayLL()
+#     result = LL.delete_head()
+#     assert LL.get_count() == 1
+#     print("\nDeleted element at head: {}".format(result))
+#     LL.displayLL()
 
-#add at tail
+# def delete_tail_test():
+#     print("Before deleting tail")
+#     LL.displayLL()
+#     result = LL.delete_tail()
+#     assert LL.get_count() == 1
+#     print("\nDeleted element at tail: {}".format(result))
+#     LL.displayLL()
 
-# print("Adding element at tail")
-# print("LL before adding element")
-# SLL.displayLL()
-SLL.add_at_tail(50)
-# assert SLL.get_count()==5
-# print("LL after adding element")
-# SLL.displayLL()
+def after_given_data_test():
+    LL.add_after_data(10,15)
+    LL.add_after_data(15,20)
+    LL.add_after_data(20,25)
+    # assert LL.get_count() == 4
+    # print("All elements added after given data")
+    # LL.displayLL()
 
-#delete head and tail
-# print("Before deleting the element:")
-# SLL.displayLL()
-# SLL.delete_tail()
-# assert SLL.get_count()== 4 #4
-# print("\nElement deleted")
-# SLL.displayLL()
+def delete_after_data_test():
+    # print("Before deleting the element")
+    # LL.displayLL()
+    result = LL.delete_after_data(15)
+    # assert LL.get_count() == 3
+    # print("\nElement {} deleted after given data".format(result))
+    # LL.displayLL()
 
-# print("Before deleting the element:")
-SLL.displayLL()
-if  SLL.search_Element(30) :
-    print("element found")
-# print("\nElement Deleted")
-# SLL.disgplayLL()
+def search_ele_test():
+    element = 20
+    assert LL.search_Element(element)
+    print("Element {} found in linked list".format(element))
+    LL.displayLL()
+
+add_head_test()
+after_given_data_test()
+search_ele_test()
+
+# delete_after_data_test()
+# add_tail_test()
+# delete_tail_test()
+# delete_head_test()
