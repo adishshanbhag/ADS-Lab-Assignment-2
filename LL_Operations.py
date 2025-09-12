@@ -4,10 +4,52 @@ class LinkedListOperations(singleLinkedList):
     def __init__(self):
         super().__init__()
 
+    def remove_Duplicates(self):
+         values = {}
+         curnode = self.head
+         prevNode = None
+         while curnode!=None:
+            if curnode.data not in values:
+                values[curnode.data] = 1
+                prevNode = curnode
+            else:
+                prevNode.next = curnode.next
+                prevNode = curnode
+                curnode = curnode.next
+                prevNode.next = None
+                del prevNode
+                continue
+            prevNode = curnode
+            curnode = curnode.next
+
+    def is_palindrome(self):
+        if not self.is_empty():
+            rev_list = singleLinkedList()
+            curNode = self.head
+            #creating a copy of the original linked list
+            while curNode!=None:
+                rev_list.add_at_tail(curNode.data)
+                curNode = curNode.next
+            rev_list.reverse_LinkedList()
+            curNode=self.head
+            curNode_2 = rev_list.head
+            list_size = int(self.get_count())
+            nodeCount = list_size/2 if list_size%2 == 0 else (list_size/2)+1
+            while nodeCount!=0:
+                if curNode.data == curNode_2.data:
+                    curNode = curNode.next
+                    curNode_2 = curNode_2.next
+                    nodeCount-=1
+                else:
+                    break
+            return nodeCount == 0
+        
+
     def split_LinkedList(self):
         if not self.is_empty():
             # self.reverse_LinkedList()
-            L1, L2 = singleLinkedList()
+            L1 = singleLinkedList()
+            L2 = singleLinkedList()
             curNode = self.head
             NodeCount=0
             while curNode!=None:
@@ -15,19 +57,24 @@ class LinkedListOperations(singleLinkedList):
                     L1.add_at_tail(curNode.data)
                 else:
                     L2.add_at_tail(curNode.data)
+                curNode = curNode.next
+                NodeCount+=1
             print("After splitting:")
-            print("First Lin")
-    def reverse_LinkedList(self):
-        if not self.is_empty():
-            curNode = self.head
-            nextNode = curNode
-            prevNode = None
-            while nextNode!=None:
-                nextNode = curNode.next
-                curNode.next = prevNode
-                prevNode = curNode
-                curNode = nextNode
-            self.head, self.tail = self.tail, self.head
+            print("First Linked list: ")
+            L1.displayLL()
+            print("\nSecond Linked List: ")
+            L2.displayLL()
+    # def reverse_LinkedList(self):
+    #     if not self.is_empty():
+    #         curNode = self.head
+    #         nextNode = curNode
+    #         prevNode = None
+    #         while nextNode!=None:
+    #             nextNode = curNode.next
+    #             curNode.next = prevNode
+    #             prevNode = curNode
+    #             curNode = nextNode
+    #         self.head, self.tail = self.tail, self.head
     
     def sum_n_last_elements(self,n):
         if self.is_empty():

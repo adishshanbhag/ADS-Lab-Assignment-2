@@ -114,6 +114,18 @@ class singleLinkedList:
             if temp!=None:
                 return True
         return False
+    
+    def reverse_LinkedList(self):
+        if not self.is_empty():
+            curNode = self.head
+            nextNode = curNode
+            prevNode = None
+            while nextNode!=None:
+                nextNode = curNode.next
+                curNode.next = prevNode
+                prevNode = curNode
+                curNode = nextNode
+            self.head, self.tail = self.tail, self.head
             
             
     
