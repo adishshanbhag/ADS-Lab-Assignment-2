@@ -109,7 +109,7 @@ class singleLinkedList:
     def search_Element(self,key):
         if not self.is_empty():
             temp = self.head
-            while temp.data!=key and temp!=None:
+            while temp!=None and temp.data!=key:
                 temp = temp.next
             if temp!=None:
                 return True
